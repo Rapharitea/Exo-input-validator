@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Input validator</title>
+</head>
+<body>
+   
+  <style>
+      .success,.error {
+          display: none;
+      }
+      
+      .success {
+          color:green;
+          font-family: arial;
+      }
+  </style>
+    
+   <div class="form">
+       <form action="get">
+           <input class="input" type="text" placeholder="Prénom">
+           <input class="input" type="text" placeholder="Nom">
+           <input class="submit" type="submit" value="Envoyer">
+        
+           <div class="success">Vos identifiants ont bien été transmis</div>   
+           <div class="error">OUPS, Il semblerait que vous ayez oublier de remplir un champ.</div>
+       </form>
+       
+       
+   </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+    
+    <script>
+        $(".submit").click(
+            
+            function(e){
+                e.preventDefault();
+                
+                $(".success,.error").fadeOut()
+                
+                var errors = false;
+                
+                $(".form .input").each(
+                
+                    function(){
+                        
+                        if(this.value === ""){
+                            errors = true
+                        }
+                        
+                    }
+                    
+                )
+                
+                
+                if(errors){
+                    $(".error").fadeIn()
+                }
+                else{
+                    $(".success").fadeIn()
+                }
+                
+                
+            }
+            
+        )
+    </script>
+</body>
+</html>
